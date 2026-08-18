@@ -1,10 +1,10 @@
 const express = require('express');
 
 
-const router = express.route();router
+const router = express.Route();
 
 
-router.post("/register", (req,res) => {
+router.post('/register',)
 
-})
+
 module.exports = router;
