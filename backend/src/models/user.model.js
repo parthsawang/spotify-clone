@@ -3,24 +3,24 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     username: {
-        type: string ,
+        type: String, 
         required: true,
         unique: true
     },
     
     email: {
-        type: string,
+        type: String,
         required: true,
         unique: true,
     },
 
     password: {
-        type: string,
+        type: String,
         required: true,
     },
 
     role:{
-        type: string,
+        type: String,
         enum: ['user', 'artist'],
         default: 'user'
     }
