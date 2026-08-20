@@ -66,26 +66,8 @@ console.log("COLLECTION:", userModel.collection.name);
     });
 }
 
-async function loginUser(req,res) {
 
 
-    const{ username , email , password } = res.body;
-
-    // Check if a user already exists with the same username OR email
-    const isUserAlreadyExist = await userModel.findOne({
-        $or: [
-            { username },
-            { email }
-        ]
-    });
-
-    // If user already exists, stop execution and send an error response
-    if (isUserAlreadyExist) {
-        return res.status(409).json({
-            message: 'User already exists'
-        });
-    }
-}
 
 module.exports = { registerUser };
 
