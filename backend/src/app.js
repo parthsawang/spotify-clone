@@ -10,8 +10,9 @@ const app = express();
 app.use(express.json());
 app.use(cookieeParser());
 
+// creating a base URL 
 app.use('/api/auth', authRouter);
-app.use('api/auth/',loginRouter)
+app.use('/api/auth',loginRouter)
 
 
 module.exports = app;

@@ -49,8 +49,11 @@ console.log("COLLECTION:", userModel.collection.name);
         process.env.JWT_SECRET
     );
 
+    console.log(token)
+
     // Store JWT token in a cookie
     res.cookie("token", token);
+    
 
     // Send successful registration response
     return res.status(201).json({
