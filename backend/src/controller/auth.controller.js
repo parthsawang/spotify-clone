@@ -36,9 +36,7 @@ async function registerUser(req, res) {
         role
     });
 
-    console.log("USER CREATED:", user);
-console.log("DATABASE:", userModel.db.name);
-console.log("COLLECTION:", userModel.collection.name);
+    
 
     // Create JWT token using the user's ID and role
     const token = jwt.sign(
