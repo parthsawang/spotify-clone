@@ -1,6 +1,7 @@
 const express = require('express');
 const musicModel = require('../models/music.model');
 const jwt = require("jsonwebtoken")
+
 async function createMusic(req , res) {
     
     const {uri, title , artist } = req.body
@@ -34,8 +35,11 @@ try {
     return res.status(401).json({
         message: "Unauthorized"
     })
+
+     const {title} = req.body;
+     const file = req.file;
+
+
 }
-
-
 
 }
