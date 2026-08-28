@@ -3,7 +3,10 @@ const uploadFile = require("../services/storage.service");
 const jwt = require("jsonwebtoken");
 
 
+
 async function createMusic(req, res) {
+
+
     try {
         // Get token from cookie
         const token = req.cookies.token;
@@ -21,7 +24,7 @@ async function createMusic(req, res) {
         );
 
         // Check user role
-        if (decoded.role !== "artist") {
+        if ( decoded.role !== "artist") {
             return res.status(403).json({
                 message: "You don't have access to create music"
             });
@@ -46,7 +49,7 @@ async function createMusic(req, res) {
 
         // Save music in MongoDB
         const music = await musicModel.create({
-            url: result.url,
+            uri: result.url,
             title: title,
             artist: decoded.id
         });
@@ -56,7 +59,7 @@ async function createMusic(req, res) {
             message: "Music created successfully",
             music: {
                 id: music._id,
-                url: music.url,
+                url: music.uri,
                 title: music.title,
                 artist: music.artist
             }
