@@ -12,7 +12,7 @@ app.use(cookieeParser());
 // creating a base URL 
 app.use('/api/auth', authRouter);
 app.use('/api/auth',loginRouter)
-app.use('/api/music/',musicRouter);
+app.use('/api/music',musicRouter);
 
 
 module.exports = app;
