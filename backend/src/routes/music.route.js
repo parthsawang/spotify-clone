@@ -1,14 +1,19 @@
-const express = require('express');
-const musicController = require('../controller/music.controller');
-const multer  = require('multer')
-const upload = multer({ 
-    storage: multer.memoryStorage() })
+const express = require("express");
+const musicController = require("../controller/music.controller");
+const multer = require("multer");
 
+const upload = multer({
+    storage: multer.memoryStorage()
+});
 
+const musicRouter = express.Router();
 
-const musicRouter = express.Router()
+musicRouter.post(
+    "/upload",
+    upload.single("music"),
+    musicController.createMusic
+);
 
-musicRouter.post("/upload",upload.single("music"), musicController.createMusic)
 musicRouter.post(
     "/album",
     upload.array("songs", 10),
@@ -16,5 +21,3 @@ musicRouter.post(
 );
 
 module.exports = musicRouter;
-
-

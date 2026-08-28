@@ -33,7 +33,7 @@ async function createMusic(req, res) {
         }
 
         // Get title from request body
-        const { title } = req.body;
+        const { title} = req.body;
 
         // Get music file
         const file = req.file;
@@ -79,6 +79,10 @@ async function createMusic(req, res) {
 async function createAlbum(req, res) {
 
     try {
+
+          console.log("BODY:", req.body);
+        console.log("FILES:", req.files);
+
 
         // Get token from cookie
         const token = req.cookies.token;
@@ -139,3 +143,4 @@ async function createAlbum(req, res) {
 module.exports = {
     createMusic ,createAlbum
 };
+
