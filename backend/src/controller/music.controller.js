@@ -80,8 +80,12 @@ async function createAlbum(req, res) {
 
     try {
 
-          console.log("BODY:", req.body);
-        console.log("FILES:", req.files);
+         // Get album data
+        const { title, songs } = req.body;
+       // NOW use them
+        console.log("TITLE:", title);
+        console.log("SONGS:", songs);
+
 
 
         // Get token from cookie
@@ -106,15 +110,18 @@ async function createAlbum(req, res) {
             });
         }
 
-        // Get album data
-        const { title, songsIDs } = req.body;
+       
+
 
         // Create album
         const album = await albumModel.create({
             title: title,
             artist: decoded.id,
-            songs: songsIDs
+            songs
         });
+
+    
+
 
         // Response
         return res.status(201).json({
@@ -126,7 +133,10 @@ async function createAlbum(req, res) {
                 artist: album.artist,
                 songs: album.songs
             }
+
         });
+
+       
 
     } catch (error) {
 
