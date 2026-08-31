@@ -21,6 +21,7 @@ async function authArtist (req , res , next){
             });
         };
 
+       req.user = decoded;
 
         next();
         

@@ -19,18 +19,7 @@ async function createMusic(req, res) {
             });
         }
 
-        // Verify JWT
-        const decoded = jwt.verify(
-            token,
-            process.env.JWT_SECRET
-        );
-
-        // Check user role
-        if ( decoded.role !== "artist") {
-            return res.status(403).json({
-                message: "You don't have access to create music"
-            });
-        }
+        
 
         // Get title from request body
         const { title} = req.body;
@@ -53,7 +42,7 @@ async function createMusic(req, res) {
         const music = await musicModel.create({ // here creating collection 
             uri: result.url,
             title: title,
-            artist: decoded.id
+            artist: req.user.id
         });
 
         // Send response
@@ -97,26 +86,14 @@ async function createAlbum(req, res) {
             });
         }
 
-        // Verify JWT
-        const decoded = jwt.verify(
-            token,
-            process.env.JWT_SECRET
-        );
-
-        // Check artist role
-        if (decoded.role !== "artist") {
-            return res.status(403).json({
-                message: "You don't have access to create music album"
-            });
-        }
-
+        
        
 
 
         // Create album
         const album = await albumModel.create({
             title: title,
-            artist: decoded.id,
+            artist: req.user.id,
             songs
         });
 
