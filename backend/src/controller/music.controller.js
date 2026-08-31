@@ -1,9 +1,9 @@
 const musicModel = require("../models/music.model");
-const albumModel = require("../models/album.model")
+const albumModel = require("../models/album.model");
+
 const uploadFile = require("../services/storage.service");
 const jwt = require("jsonwebtoken");
 const { default: mongoose } = require("mongoose");
-
 
 
 async function createMusic(req, res) {
@@ -136,7 +136,6 @@ async function createAlbum(req, res) {
 
         });
 
-       
 
     } catch (error) {
 

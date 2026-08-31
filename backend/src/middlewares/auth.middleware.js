@@ -22,7 +22,8 @@ async function authArtist (req , res , next){
         };
 
 
-        next()
+        next();
+        
 
 
     } catch (error) {
