@@ -21,4 +21,8 @@ musicRouter.post(
     musicController.createAlbum
 );
 
+musicRouter.get(
+    "/",
+    musicController.getMusicById
+);
 module.exports = musicRouter;

@@ -46,6 +46,7 @@ async function loginUser(req, res) {
     // Store token in cookie
     res.cookie("token", token);
 
+
     // Send response
     res.status(200).json({
         message: "User logged in successfully",

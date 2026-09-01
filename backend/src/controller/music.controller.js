@@ -10,16 +10,7 @@ async function createMusic(req, res) {
 
 
     try {
-        // Get token from cookie
-        const token = req.cookies.token;
-
-        if (!token) {
-            return res.status(401).json({
-                message: "Unauthorized user"
-            });
-        }
-
-        
+     
 
         // Get title from request body
         const { title} = req.body;
@@ -71,34 +62,13 @@ async function createAlbum(req, res) {
 
          // Get album data
         const { title, songs } = req.body;
-       // NOW use them
-        console.log("TITLE:", title);
-        console.log("SONGS:", songs);
-
-
-
-        // Get token from cookie
-        const token = req.cookies.token;
-
-        if (!token) {
-            return res.status(401).json({
-                message: "Unauthorized user"
-            });
-        }
-
-        
        
-
-
         // Create album
         const album = await albumModel.create({
             title: title,
             artist: req.user.id,
             songs
         });
-
-    
-
 
         // Response
         return res.status(201).json({
@@ -124,9 +94,16 @@ async function createAlbum(req, res) {
     }
 }
 
+async function getMusicById(req, res) {
 
+        const listener = await musicModel.findById(id);
+        res.status(200).json({
+            message: "Music fetched successfully",
+            music: listener
+        });
+    } 
 
 module.exports = {
-    createMusic ,createAlbum
+    createMusic ,createAlbum,getMusicById
 };
 
