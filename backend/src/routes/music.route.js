@@ -1,6 +1,7 @@
 const express = require("express");
 const musicController = require("../controller/music.controller");
-const authArtist = require("../middlewares/auth.middleware");
+const {authUser} = require("../middlewares/auth.middleware");
+const {authArtist} = require("../middlewares/auth.middleware")
 const multer = require("multer");
 
 const upload = multer({
@@ -8,6 +9,8 @@ const upload = multer({
 });
 
 const musicRouter = express.Router();
+
+
 
 musicRouter.post(
     "/upload",authArtist,
@@ -21,8 +24,12 @@ musicRouter.post(
     musicController.createAlbum
 );
 
+
 musicRouter.get(
     "/",
     musicController.getMusicById
 );
+
+
+
 module.exports = musicRouter;

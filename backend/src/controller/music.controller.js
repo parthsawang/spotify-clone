@@ -96,7 +96,7 @@ async function createAlbum(req, res) {
 
 async function getMusicById(req, res) {
 
-        const listener = await musicModel.findById(id);
+        const listener = await musicModel.find().populate("artist", "username email");
         res.status(200).json({
             message: "Music fetched successfully",
             music: listener
